@@ -8,6 +8,7 @@ baglanti.con.query("SELECT * FROM `targetList`", (err, res) => {
             if (i % 2 == 0) {
                 let row = document.createElement("div")
                 row.setAttribute("class", "Row")
+                row.setAttribute("id", i)
                 let column = document.createElement("div");
                 column.setAttribute("class", "Column")
                 row.appendChild(column)
