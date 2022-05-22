@@ -31,7 +31,17 @@
 
         #modalAc {
             margin: auto;
-            width: 100%;
+
+        }
+
+        #yapildi {
+            margin: auto;
+
+        }
+
+        #sil {
+            margin: auto;
+
         }
 
         #modalDiv {
@@ -71,6 +81,11 @@
         .Column {
             display: table-cell;
         }
+
+        #aciklama {
+            width: 90%;
+            margin: auto;
+        }
     </style>
     <title>Document</title>
 </head>
@@ -82,12 +97,45 @@
             data-bs-target="#staticBackdrop">
             Hedef Ekle
         </button>
+        <button id="yapildi" type="button" class="btn btn-primary text-center">Yapıldı olarak işaretle</button>
+        <button id="sil" type="button" class="btn btn-primary text-center">Sil</button>
+
+        <script src="./yapildi.js"></script>
+        <script>
+            document.getElementById("yapildi").addEventListener("click", (event) => {
+                event.preventDefault();
+                var secilmisler = document.querySelectorAll('input[type="checkbox"]:checked')
+                var secilmis = []
+                for (i = 0; i < secilmisler.length;
+                    i++) {
+                    secilmis.push(secilmisler[i].value);
+                }
+                console.log(secilmis)
+                isaretle(secilmis);
+            })
+        </script>
+
+        <script src="./sil.js"></script>
+        <script>
+            document.getElementById("sil").addEventListener("click", (event) => {
+                event.preventDefault();
+                var secilmisler = document.querySelectorAll('input[type="checkbox"]:checked')
+                var secilmis = []
+                for (i = 0; i < secilmisler.length;
+                    i++) {
+                    secilmis.push(secilmisler[i].value);
+                }
+                console.log(secilmis)
+                sil(secilmis);
+            })
+        </script>
+
     </div>
     <hr>
 
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div style="background-color:red;" class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -100,15 +148,8 @@
                     <div class="container " style="background-color: blueviolet;">
                         <input type="text" placeholder="Hedef başlığı gir!" id="baslik">
                         <hr>
-                        <div id="editor"></div>
-                        <script src="./ckeditor.js"></script>
-                        <script>
-                            ClassicEditor
-                                .create(document.querySelector('#editor'))
-                                .catch(error => {
-                                    console.error(error);
-                                });
-                        </script>
+                        <textarea name="aciklama" id="aciklama" cols="30" rows="10">Hedef Açıklaması Girin</textarea>
+                        <hr>
                         <input type="date" id="sonTarih">
                         <hr>
                         <input type="button" id="kaydet" value="Oluştur!">

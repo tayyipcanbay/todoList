@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ckeditor/ckeditor5-autosave": "^34.0.0",
     "@ckeditor/ckeditor5-build-classic": "^34.0.0",
+    "@editorjs/editorjs": "^2.24.3",
     "electron": "^18.2.4",
     "mysql": "^2.18.1"
   }

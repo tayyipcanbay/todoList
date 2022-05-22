@@ -18,7 +18,14 @@ baglanti.con.query("SELECT * FROM `targetList`", (err, res) => {
                 container.appendChild(row)
                 var baslik = "<h5>" + res[i]['header'] + "</h5><hr>";
                 var aciklama = res[i]['text'];
+                var isaret = document.createElement("input");
+                isaret.setAttribute("type", "checkbox");
+                isaret.setAttribute("value", res[i]['id'])
+                hedefDiv.appendChild(isaret);
                 hedefDiv.innerHTML += baslik + aciklama
+                if (res[i]['isDone'] == 0) {
+                    hedefDiv.style.backgroundColor = "red";
+                }
                 column.appendChild(hedefDiv)
             }
             else {
@@ -31,7 +38,14 @@ baglanti.con.query("SELECT * FROM `targetList`", (err, res) => {
                 hedefDiv.setAttribute("id", res[i]['id'])
                 var baslik = "<h5>" + res[i]['header'] + "</h5><hr>";
                 var aciklama = res[i]['text'];
+                var isaret = document.createElement("input");
+                isaret.setAttribute("type", "checkbox");
+                isaret.setAttribute("value", res[i]['id'])
+                hedefDiv.appendChild(isaret);
                 hedefDiv.innerHTML += baslik + aciklama
+                if (res[i]['isDone'] == 0) {
+                    hedefDiv.style.backgroundColor = "red";
+                }
                 column.appendChild(hedefDiv)
             }
 
